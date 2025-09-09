@@ -125,19 +125,19 @@ public class Message {
      */
     private Map<?, ?> getNewLangMap() {
         if (dir == null || lang == null) {
-            throw new IllegalStateException("LanguageManager not set up correctly. dir=" + dir + " lang=" + lang);
+            throw new IllegalStateException("LanguageManager not set up. dir=" + dir + ", lang=" + lang);
         }
 
         File file = new File(dir + "/lang/" + lang + ".json");
-
-        Reader reader;
-        try {
-            reader = Files.newBufferedReader(file.toPath());
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read language file: " + file.getAbsolutePath(), e);
+        if (!file.exists()) {
+            throw new IllegalStateException("Language file not found: " + file.getAbsolutePath());
         }
 
-        return new Gson().fromJson(reader, Map.class);
+        try (Reader reader = Files.newBufferedReader(file.toPath())) {
+            return new Gson().fromJson(reader, Map.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not read language file: " + file.getAbsolutePath(), e);
+        }
     }
 
     /**
