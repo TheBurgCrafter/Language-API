@@ -124,13 +124,17 @@ public class Message {
      * @throws RuntimeException if the file cannot be read or parsed.
      */
     private Map<?, ?> getNewLangMap() {
+        if (dir == null || lang == null) {
+            throw new IllegalStateException("LanguageManager not set up correctly. dir=" + dir + " lang=" + lang);
+        }
+
         File file = new File(dir + "/lang/" + lang + ".json");
 
         Reader reader;
         try {
             reader = Files.newBufferedReader(file.toPath());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to read language file: " + file.getAbsolutePath(), e);
         }
 
         return new Gson().fromJson(reader, Map.class);
