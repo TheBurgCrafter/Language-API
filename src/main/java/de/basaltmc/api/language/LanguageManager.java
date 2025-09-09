@@ -57,8 +57,8 @@ public class LanguageManager {
     /**
      * Constructs an uninitialized {@code LanguageManager}.
      * <p>
-     * Use one of the {@link #setup(boolean, String, String)} or
-     * {@link #setup(boolean, String, String)} methods to configure it.
+     * Use one of the {@link #setup(boolean, String, String, String)} or
+     * {@link #setup(boolean, String, String, String)} methods to configure it.
      */
     public LanguageManager() {
     }
@@ -69,8 +69,11 @@ public class LanguageManager {
      * @param allowEndUserLanguageModification whether end-users are allowed to modify extracted language files.
      * @param directory                        the base directory where language files will be stored.
      * @param language                         the initial language to set (e.g., "en").
+     * @param jarName                          the name of the jar the api is used in.
      */
-    public void setup(boolean allowEndUserLanguageModification, String directory, String language) {
+    public void setup(boolean allowEndUserLanguageModification, String directory, String language, String jarName) {
+        extractLanguages(directory, jarName);
+
         allowEndUserModification = allowEndUserLanguageModification;
         dir = directory;
         lang = language;

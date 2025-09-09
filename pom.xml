@@ -5,8 +5,32 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.basaltmc.api</groupId>
-    <artifactId>API_Language</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>api-language</artifactId>
+    <version>1.0</version>
+    <name>Language-API</name>
+    <description>A Java Language API using json files</description>
+
+    <developers>
+        <developer>
+            <name>TheBurgCrafter</name>
+            <email>TheBurgCrafter@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/TheBurgCrafter/Language-API</url><hg
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>

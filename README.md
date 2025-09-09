@@ -1,13 +1,13 @@
 # Language API
 
-The **Language API** is a Java-based library designed to manage multilingual support for applications. It allows developers to load, switch, and retrieve localized messages dynamically at runtime. The API is flexible, allowing developers to define the format of language files (JSON, XML, YAML, or any custom format that can be parsed into key-value pairs).
+The **Language API** is a Java-based library designed to manage multilingual support for applications. It allows developers to load, switch, and retrieve localized messages dynamically at runtime. The API is flexible, allowing developers to define the format of language files.
 
 ---
 
 ## Features
 
 - **Dynamic Language Management**: Set and switch application languages at runtime.
-- **Flexible Language Files**: Support for any format that can be read into a key-value map (default example uses JSON).
+- **Flexible Language Files**: Support for any format that can be read into a key-value map.
 - **End-User Modification Support**: Optionally allow end-users to modify language files without overwriting.
 - **Automatic Extraction**: Extract language files from a packaged JAR.
 - **Logging**: Optional logging of language operations with customizable prefixes.
@@ -69,30 +69,29 @@ String goodbye = message.get("goodbye.message");
 ```
 
 ## Language File Format
-### The Language API is format-agnostic. You can choose any format as long as it can be converted into a key-value map.
 #### JSON (default example):
 ```json
 {
-    "welcome.message": "Welcome, %username%!",
-    "goodbye.message": "Goodbye!"
+  "welcome.message": "Welcome, %username%!",
+  "goodbye.message": "Goodbye!"
 }
 ```
 ## Example Project Structure
 ```css
 resources/
-  lang/
-    en_US.json
-    fr_FR.json
+lang/
+en_US.json
+fr_FR.json
 src/
-  main/
-    java/
-      LanguageManager.java
-      Message.java
+main/
+java/
+LanguageManager.java
+Message.java
 ```
 ## Notes
-  - If **allowEndUserModification** is true, **language files will not be overwritten** if they already exist when extracting from the JAR.
-  - If **allowEndUserModification** is false, **language files will be replaced** during extraction.
-  - The API is designed to be **simple and flexible**, giving developers **full control** over language management.
+- If **allowEndUserModification** is true, **language files will not be overwritten** if they already exist when extracting from the JAR.
+- If **allowEndUserModification** is false, **language files will be replaced** during extraction.
+- The API is designed to be **simple and flexible**, giving developers **full control** over language management.
 
 ## Contributing
 Contributions are welcome! Feel free to submit issues, suggest improvements, or extend the library to support additional file formats.
